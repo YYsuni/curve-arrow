@@ -1,7 +1,6 @@
 {
-  "name": "svg-curve-demo",
-  "private": true,
-  "version": "0.0.0",
+  "name": "curve-arrow",
+  "version": "1.0.0",
   "type": "module",
   "packageManager": "pnpm@9.15.9",
   "scripts": {
