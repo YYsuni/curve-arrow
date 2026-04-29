@@ -23,7 +23,7 @@ const d = buildCurvedArrowPathD({ x: 100, y: 200 }, { x: 400, y: 300 })
 | `startClearance`   | 起点偏移            | `0～120`          |
 | `tipClearance`     | 终点偏移            | `0～120`          |
 | `arrowBaseExtraPx` | 箭头宽度            | `0～64`           |
-| `arrowTipScale`    | 箭头长度            | `1～2.5`，`0.05`  |
+| `arrowTipScale`    | 箭头长度            | `1～2.5`          |
 
 ## 许可证
 
