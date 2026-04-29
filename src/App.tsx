@@ -24,9 +24,6 @@ export default function App() {
 	const [fillColorStart, setFillColorStart] = useState('#6366f1')
 	const [fillColorEnd, setFillColorEnd] = useState('#ab0af5')
 
-	const onP1Change = useCallback((p: Point) => setP1(p), [])
-	const onP2Change = useCallback((p: Point) => setP2(p), [])
-
 	const onExportSvg = useCallback(() => {
 		const svg = buildCroppedArrowSvgString({
 			p1,
@@ -73,8 +70,8 @@ export default function App() {
 			<CurveCanvas
 				p1={p1}
 				p2={p2}
-				onP1Change={onP1Change}
-				onP2Change={onP2Change}
+				onP1Change={setP1}
+				onP2Change={setP2}
 				startWidth={startWidth}
 				endWidth={endWidth}
 				fillColor={fillColor}

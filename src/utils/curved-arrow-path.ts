@@ -192,7 +192,7 @@ export function getCurvedArrowPathVertices(
 
 	const { c1, c2, endTangent } = cubicHandlesDoubleBend(aDraw, bDraw, bendStrength, bendArch, sx, sy)
 
-	const wStartTotal = typeof startWidth === 'number' ? Math.max(1.2, startWidth) : Math.max(1.2, endWidth * 0.05)
+	const wStartTotal = Math.max(1.2, startWidth)
 	const wEndTotal = Math.max(wStartTotal + 1.5, endWidth)
 	const tipExt = Math.max(6, endWidth * 0.53 + 12) * Math.max(0.35, arrowTipScale)
 	const flare = Math.max(0, arrowBaseExtraPx)
@@ -236,7 +236,7 @@ export function getCurvedArrowPathVertices(
 		y: bDraw.y + endTangent.y * tipExt
 	}
 
-	return [...left, headBaseL, tip, headBaseR, ...[...right].reverse()]
+	return [...left, headBaseL, tip, headBaseR, ...right.slice().reverse()]
 }
 
 /**

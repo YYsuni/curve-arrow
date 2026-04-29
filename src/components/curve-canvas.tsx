@@ -48,7 +48,6 @@ export function CurveCanvas({
 	segments
 }: CurveCanvasProps) {
 	const containerRef = useRef<HTMLDivElement>(null)
-	const svgRef = useRef<SVGSVGElement>(null)
 	const [drag, setDrag] = useState<1 | 2 | 'path' | null>(null)
 	const pathDragRef = useRef<{ cx: number; cy: number; p1: Point; p2: Point } | null>(null)
 	const [svgSize, setSvgSize] = useState({ w: 0, h: 0 })
@@ -135,7 +134,6 @@ export function CurveCanvas({
 	return (
 		<div ref={containerRef} className='relative flex-1 overflow-hidden'>
 			<svg
-				ref={svgRef}
 				role='img'
 				aria-label='Draggable curve between two points'
 				width={svgSize.w}

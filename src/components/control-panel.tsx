@@ -1,6 +1,27 @@
 import { type CSSProperties, type ReactNode, useId } from 'react'
 import { BEND_STRENGTH_MAX } from '../utils/curved-arrow-path'
 
+const BEND_ARCH_ITEMS = [
+	{ value: 'up' as const, label: '向上' },
+	{ value: 'down' as const, label: '向下' }
+]
+
+const BEND_RADIO_ITEM_CLASS =
+	'flex flex-1 cursor-pointer items-center justify-center rounded-lg border border-slate-200/80 bg-transparent px-2.5 py-1.5 text-[13px] font-medium text-slate-600 transition-colors has-[:checked]:border-teal-400/50 has-[:checked]:bg-teal-500/[0.12] has-[:checked]:text-slate-800'
+
+function ColorSwatch({ value, onChange, minFullWidth }: { value: string; onChange: (v: string) => void; minFullWidth?: boolean }) {
+	return (
+		<label className='control-panel-color-chip block overflow-hidden rounded-lg ring-1 ring-slate-200/70'>
+			<input
+				type='color'
+				value={value}
+				onChange={e => onChange(e.target.value)}
+				className={`control-panel-color-input block h-[1.875rem] w-full cursor-pointer${minFullWidth ? 'min-w-full' : ''}`}
+			/>
+		</label>
+	)
+}
+
 type ControlPanelProps = {
 	startWidth: number
 	onStartWidthChange: (v: number) => void
@@ -140,14 +161,12 @@ export function ControlPanel({
 						<div className='flex items-center gap-2 text-[13px] text-slate-600'>
 							<span className='w-18 shrink-0 leading-snug font-medium text-slate-500'>朝向</span>
 							<div className='flex min-w-0 flex-1 items-center gap-2'>
-								<label className='flex flex-1 cursor-pointer items-center justify-center rounded-lg border border-slate-200/80 bg-transparent px-2.5 py-1.5 text-[13px] font-medium text-slate-600 transition-colors has-[:checked]:border-teal-400/50 has-[:checked]:bg-teal-500/[0.12] has-[:checked]:text-slate-800'>
-									<input type='radio' name='bendArch' checked={bendArch === 'up'} onChange={() => onBendArchChange('up')} className='sr-only' />
-									<span>向上</span>
-								</label>
-								<label className='flex flex-1 cursor-pointer items-center justify-center rounded-lg border border-slate-200/80 bg-transparent px-2.5 py-1.5 text-[13px] font-medium text-slate-600 transition-colors has-[:checked]:border-teal-400/50 has-[:checked]:bg-teal-500/[0.12] has-[:checked]:text-slate-800'>
-									<input type='radio' name='bendArch' checked={bendArch === 'down'} onChange={() => onBendArchChange('down')} className='sr-only' />
-									<span>向下</span>
-								</label>
+								{BEND_ARCH_ITEMS.map(({ value, label }) => (
+									<label key={value} className={BEND_RADIO_ITEM_CLASS}>
+										<input type='radio' name='bendArch' checked={bendArch === value} onChange={() => onBendArchChange(value)} className='sr-only' />
+										<span>{label}</span>
+									</label>
+								))}
 							</div>
 						</div>
 					</div>
@@ -192,36 +211,15 @@ export function ControlPanel({
 							<div className='flex flex-col gap-2'>
 								<div className='flex flex-col gap-1'>
 									<span className='text-[11px] font-medium tracking-wide text-slate-400 uppercase'>起点色</span>
-									<label className='control-panel-color-chip block overflow-hidden rounded-lg ring-1 ring-slate-200/70'>
-										<input
-											type='color'
-											value={fillColorStart}
-											onChange={e => onFillColorStartChange(e.target.value)}
-											className='control-panel-color-input block h-[1.875rem] w-full min-w-full cursor-pointer'
-										/>
-									</label>
+									<ColorSwatch value={fillColorStart} onChange={onFillColorStartChange} minFullWidth />
 								</div>
 								<div className='flex flex-col gap-1'>
 									<span className='text-[11px] font-medium tracking-wide text-slate-400 uppercase'>终点色</span>
-									<label className='control-panel-color-chip block overflow-hidden rounded-lg ring-1 ring-slate-200/70'>
-										<input
-											type='color'
-											value={fillColorEnd}
-											onChange={e => onFillColorEndChange(e.target.value)}
-											className='control-panel-color-input block h-[1.875rem] w-full min-w-full cursor-pointer'
-										/>
-									</label>
+									<ColorSwatch value={fillColorEnd} onChange={onFillColorEndChange} minFullWidth />
 								</div>
 							</div>
 						) : (
-							<label className='control-panel-color-chip block overflow-hidden rounded-lg ring-1 ring-slate-200/70'>
-								<input
-									type='color'
-									value={fillColor}
-									onChange={e => onFillColorChange(e.target.value)}
-									className='control-panel-color-input block h-[1.875rem] w-full cursor-pointer'
-								/>
-							</label>
+							<ColorSwatch value={fillColor} onChange={onFillColorChange} />
 						)}
 					</div>
 				</PanelSection>
