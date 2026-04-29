@@ -1,6 +1,6 @@
 {
   "name": "curve-arrow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Build SVG path `d` for a curved arrow (cubic Bézier shaft + triangular head). Pure TypeScript, zero runtime deps.",
   "license": "MIT",
   "type": "module",
