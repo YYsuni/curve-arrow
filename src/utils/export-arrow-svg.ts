@@ -3,7 +3,7 @@ import {
 	getCurvedArrowPathBoundingBox,
 	type BoundingBox,
 	type Point
-} from './curved-arrow-path'
+} from 'curve-arrow'
 
 export type ExportArrowSvgParams = {
 	p1: Point

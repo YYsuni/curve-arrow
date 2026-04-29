@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import { CurveCanvas } from './components/curve-canvas'
 import { ControlPanel } from './components/control-panel'
-import { DEFAULT_BEND_STRENGTH, DEFAULT_HANDLE_SCALE_X, DEFAULT_HANDLE_SCALE_Y, DEFAULT_SEGMENTS, type Point } from './utils/curved-arrow-path'
+import { DEFAULT_BEND_STRENGTH, DEFAULT_HANDLE_SCALE_X, DEFAULT_HANDLE_SCALE_Y, DEFAULT_SEGMENTS, type Point } from 'curve-arrow'
 import { buildCroppedArrowSvgString, downloadSvgFile } from './utils/export-arrow-svg'
 
 export default function App() {

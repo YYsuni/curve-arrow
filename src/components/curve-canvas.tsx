@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import { buildCurvedArrowPathD, type Point } from '../utils/curved-arrow-path'
+import { buildCurvedArrowPathD, type Point } from 'curve-arrow'
 
 type CurveCanvasProps = {
 	p1: Point

@@ -1,5 +1,5 @@
 import { type CSSProperties, type ReactNode, useId } from 'react'
-import { BEND_STRENGTH_MAX } from '../utils/curved-arrow-path'
+import { BEND_STRENGTH_MAX } from 'curve-arrow'
 
 const BEND_ARCH_ITEMS = [
 	{ value: 'up' as const, label: '向上' },

@@ -1,0 +1,41 @@
+{
+  "name": "curve-arrow",
+  "version": "1.0.0",
+  "description": "Build SVG path `d` for a curved arrow (cubic Bézier shaft + triangular head). Pure TypeScript, zero runtime deps.",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "keywords": [
+    "svg",
+    "arrow",
+    "path",
+    "bezier",
+    "curve"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prepare": "tsup",
+    "prepublishOnly": "pnpm run build"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "~6.0.2"
+  }
+}
